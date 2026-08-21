@@ -1,0 +1,4324 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Posgrados | UPEA</title>
+
+
+    <!-- =====================================================
+         TAILWIND
+    ====================================================== -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <!-- =====================================================
+         LUCIDE ICONS
+    ====================================================== -->
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+
+    <!-- =====================================================
+         FUENTES
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           VARIABLES
+        ====================================================== */
+
+        :root {
+
+            --navy: #030b18;
+            --navy2: #06152e;
+            --navy3: #0b2448;
+
+            --blue: #0d6efd;
+            --blue-light: #3b82f6;
+
+            --gold: #c9a227;
+            --gold-light: #f0d778;
+            --gold-soft: #d8bd5c;
+
+            --text: #f5f7fb;
+            --muted: #96a8bd;
+
+        }
+
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: 'Inter', sans-serif;
+
+            color: var(--text);
+
+            background:
+
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(13,110,253,.13),
+                    transparent 32%
+                ),
+
+                radial-gradient(
+                    circle at 85% 70%,
+                    rgba(201,162,39,.10),
+                    transparent 32%
+                ),
+
+                #030b18;
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* =====================================================
+           FONDO GRID
+        ====================================================== */
+
+        .grid-background {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -5;
+
+            pointer-events: none;
+
+            opacity: .18;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(255,255,255,.035) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 55px 55px;
+
+            mask-image:
+
+                radial-gradient(
+                    circle at center,
+                    black 10%,
+                    transparent 80%
+                );
+
+        }
+
+
+        /* =====================================================
+           AURORAS ANIMADAS
+        ====================================================== */
+
+        .aurora {
+
+            position: fixed;
+
+            width: 600px;
+
+            height: 600px;
+
+            border-radius: 50%;
+
+            filter: blur(120px);
+
+            pointer-events: none;
+
+            z-index: -4;
+
+            opacity: .14;
+
+        }
+
+
+        .aurora.one {
+
+            top: -250px;
+
+            left: -200px;
+
+            background: #0757c9;
+
+            animation:
+                auroraOne 16s ease-in-out infinite alternate;
+
+        }
+
+
+        .aurora.two {
+
+            right: -260px;
+
+            bottom: -250px;
+
+            background: #c9a227;
+
+            animation:
+                auroraTwo 19s ease-in-out infinite alternate;
+
+        }
+
+
+        .aurora.three {
+
+            width: 400px;
+
+            height: 400px;
+
+            top: 45%;
+
+            left: 40%;
+
+            background: #123e83;
+
+            opacity: .10;
+
+            animation:
+                auroraThree 13s ease-in-out infinite alternate;
+
+        }
+
+
+        @keyframes auroraOne {
+
+            from {
+                transform: translate(0,0) scale(1);
+            }
+
+            to {
+                transform: translate(180px,100px) scale(1.25);
+            }
+
+        }
+
+
+        @keyframes auroraTwo {
+
+            from {
+                transform: translate(0,0) scale(1);
+            }
+
+            to {
+                transform: translate(-150px,-100px) scale(1.3);
+            }
+
+        }
+
+
+        @keyframes auroraThree {
+
+            from {
+                transform: translate(0,0);
+            }
+
+            to {
+                transform: translate(120px,-80px);
+            }
+
+        }
+
+
+        /* =====================================================
+           PARTICULAS
+        ====================================================== */
+
+        #particles {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -3;
+
+            pointer-events: none;
+
+            opacity: .6;
+
+        }
+
+
+        /* =====================================================
+           LOADER
+        ====================================================== */
+
+        #loader {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 99999;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    #0c2850 0%,
+                    #030b18 68%
+                );
+
+            transition:
+                opacity .8s ease,
+                visibility .8s ease;
+
+        }
+
+
+        #loader.hidden {
+
+            opacity: 0;
+
+            visibility: hidden;
+
+        }
+
+
+        .loader-content {
+
+            text-align: center;
+
+            animation:
+                loaderFloat 2s ease-in-out infinite;
+
+        }
+
+
+        .loader-logo-wrapper {
+
+            width: 170px;
+
+            height: 170px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            position: relative;
+
+            margin: auto;
+
+        }
+
+
+        .loader-logo {
+
+            width: 120px;
+
+            height: 120px;
+
+            object-fit: contain;
+
+            border-radius: 50%;
+
+            filter:
+                drop-shadow(
+                    0 0 30px
+                    rgba(201,162,39,.35)
+                );
+
+        }
+
+
+        .loader-ring {
+
+            position: absolute;
+
+            inset: 0;
+
+            border-radius: 50%;
+
+            border:
+
+                1px solid
+                rgba(255,255,255,.08);
+
+            border-top-color:
+                var(--gold);
+
+            border-right-color:
+                rgba(201,162,39,.35);
+
+            animation:
+                spin 1.5s linear infinite;
+
+        }
+
+
+        .loader-ring::after {
+
+            content: '';
+
+            position: absolute;
+
+            inset: 12px;
+
+            border-radius: 50%;
+
+            border:
+
+                1px dashed
+                rgba(255,255,255,.12);
+
+            animation:
+                spinReverse 4s linear infinite;
+
+        }
+
+
+        .loader-text {
+
+            margin-top: 25px;
+
+            font-family:
+                'Space Grotesk',
+                sans-serif;
+
+            font-size: 11px;
+
+            letter-spacing: 4px;
+
+            color: #d8e1ee;
+
+        }
+
+
+        @keyframes spin {
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        @keyframes spinReverse {
+
+            to {
+                transform: rotate(-360deg);
+            }
+
+        }
+
+
+        @keyframes loaderFloat {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        header {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            padding: 18px 5%;
+
+            transition: .35s ease;
+
+        }
+
+
+        header.scrolled {
+
+            background:
+                rgba(3,11,24,.72);
+
+            backdrop-filter:
+                blur(20px);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.07);
+
+        }
+
+
+        .nav {
+
+            max-width: 1300px;
+
+            margin: auto;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            text-decoration: none;
+
+            color: white;
+
+            font-family:
+                'Space Grotesk',
+                sans-serif;
+
+            font-weight: 700;
+
+        }
+
+
+        .brand img {
+
+            width: 44px;
+
+            height: 44px;
+
+            object-fit: contain;
+
+        }
+
+
+        .brand span {
+
+            font-size: 14px;
+
+            letter-spacing: .5px;
+
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 27px;
+
+        }
+
+
+        .nav-links a {
+
+            color: #b9c6d7;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            transition: .25s;
+
+        }
+
+
+        .nav-links a:hover {
+
+            color: var(--gold-light);
+
+        }
+
+
+        .nav-button {
+
+            padding:
+                10px 17px;
+
+            border-radius: 8px;
+
+            border:
+                1px solid
+                rgba(201,162,39,.4);
+
+            background:
+                rgba(201,162,39,.06);
+
+            color:
+                var(--gold-light) !important;
+
+        }
+
+
+        .mobile-menu {
+
+            display: none;
+
+            border: 0;
+
+            background: transparent;
+
+            color: white;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =====================================================
+           GENERAL SECTIONS
+        ====================================================== */
+
+        section {
+
+            padding:
+                105px 6%;
+
+            position: relative;
+
+        }
+
+
+        .container {
+
+            max-width: 1300px;
+
+            margin: auto;
+
+        }
+
+
+        .section-heading {
+
+            margin-bottom: 42px;
+
+        }
+
+
+        .tag {
+
+            color:
+                var(--gold-light);
+
+            font-size: 11px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing: 2.5px;
+
+            font-weight: 700;
+
+        }
+
+
+        .section-heading h2 {
+
+            font-family:
+                'Space Grotesk',
+                sans-serif;
+
+            font-size:
+                clamp(35px,5vw,58px);
+
+            letter-spacing:
+                -2px;
+
+            margin:
+                10px 0 13px;
+
+            line-height: 1;
+
+        }
+
+
+        .section-heading p {
+
+            color:
+                var(--muted);
+
+            line-height:
+                1.75;
+
+            max-width:
+                680px;
+
+            font-size: 15px;
+
+        }
+
+
+        /* =====================================================
+           POSGRADOS
+        ====================================================== */
+
+        #posgrados {
+
+            padding-top:
+                145px;
+
+        }
+
+
+        .program-heading {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-end;
+
+            gap: 30px;
+
+        }
+
+
+        .live-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding:
+                9px 13px;
+
+            border-radius:
+                50px;
+
+            background:
+                rgba(45,200,120,.06);
+
+            border:
+                1px solid
+                rgba(45,200,120,.22);
+
+            color:
+                #63e69a;
+
+            font-size:
+                11px;
+
+            font-weight:
+                700;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        .live-dot {
+
+            width: 7px;
+
+            height: 7px;
+
+            border-radius: 50%;
+
+            background:
+                #45e48b;
+
+            box-shadow:
+                0 0 12px
+                #45e48b;
+
+            animation:
+                pulseDot 1.8s infinite;
+
+        }
+
+
+        @keyframes pulseDot {
+
+            0%,100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: .45;
+                transform: scale(.75);
+            }
+
+        }
+
+
+        /* =====================================================
+           CARRUSEL
+        ====================================================== */
+
+        .carousel-wrapper {
+
+            position: relative;
+
+            padding:
+                0 55px;
+
+        }
+
+
+        .program-track {
+
+            display: flex;
+
+            gap: 24px;
+
+            overflow-x: auto;
+
+            scroll-behavior: smooth;
+
+            scrollbar-width: none;
+
+            padding:
+                10px 5px 30px;
+
+        }
+
+
+        .program-track::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .program-card {
+
+            flex:
+                0 0
+                calc(50% - 12px);
+
+            border-radius:
+                22px;
+
+            overflow:
+                hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(13,38,72,.84),
+                    rgba(4,16,32,.84)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,.22);
+
+            position:
+                relative;
+
+            transition:
+                transform .4s ease,
+                border .4s ease,
+                box-shadow .4s ease;
+
+        }
+
+
+        .program-card::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: -100px;
+
+            left: -100px;
+
+            width: 200px;
+
+            height: 200px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(201,162,39,.09);
+
+            filter:
+                blur(55px);
+
+            transition: .5s;
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .program-card:hover {
+
+            transform:
+                translateY(-8px);
+
+            border-color:
+                rgba(201,162,39,.38);
+
+            box-shadow:
+                0 35px 90px
+                rgba(0,0,0,.35);
+
+        }
+
+
+        .program-card:hover::before {
+
+            transform:
+                translate(100px,100px);
+
+        }
+
+
+        /* =====================================================
+           IMAGEN DEL PROGRAMA
+        ====================================================== */
+
+        .program-image {
+
+            height:
+                295px;
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+        }
+
+
+        .program-image::after {
+
+            content: '';
+
+            position:
+                absolute;
+
+            inset: 0;
+
+            background:
+
+                linear-gradient(
+                    to bottom,
+                    transparent 35%,
+                    rgba(3,11,24,.88) 100%
+                );
+
+        }
+
+
+        .program-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition:
+                transform .7s ease;
+
+        }
+
+
+        .program-card:hover
+        .program-image img {
+
+            transform:
+                scale(1.07);
+
+        }
+
+
+        .program-type {
+
+            position:
+                absolute;
+
+            top: 17px;
+
+            left: 17px;
+
+            z-index: 2;
+
+            padding:
+                7px 12px;
+
+            border-radius:
+                50px;
+
+            background:
+                rgba(3,11,24,.72);
+
+            backdrop-filter:
+                blur(12px);
+
+            border:
+                1px solid
+                rgba(201,162,39,.45);
+
+            color:
+                var(--gold-light);
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                1.3px;
+
+        }
+
+
+        .program-number {
+
+            position:
+                absolute;
+
+            right: 18px;
+
+            top: 17px;
+
+            z-index: 2;
+
+            width: 34px;
+
+            height: 34px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+
+            background:
+                rgba(3,11,24,.55);
+
+            color:
+                rgba(255,255,255,.75);
+
+            font-family:
+                'Space Grotesk';
+
+            font-size:
+                11px;
+
+        }
+
+
+        /* =====================================================
+           CONTENIDO
+        ====================================================== */
+
+        .program-content {
+
+            padding:
+                24px 25px 25px;
+
+        }
+
+
+        .program-content h3 {
+
+            font-family:
+                'Space Grotesk';
+
+            font-size:
+                24px;
+
+            line-height:
+                1.15;
+
+            margin:
+                0 0 12px;
+
+        }
+
+
+        .program-content p {
+
+            color:
+                #92a5bb;
+
+            line-height:
+                1.65;
+
+            font-size:
+                13px;
+
+            margin:
+                0 0 20px;
+
+        }
+
+
+        .program-meta {
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap: 7px;
+
+            margin-bottom:
+                21px;
+
+        }
+
+
+        .meta {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap: 5px;
+
+            padding:
+                7px 9px;
+
+            border-radius:
+                7px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.07);
+
+            background:
+                rgba(255,255,255,.035);
+
+            color:
+                #b8c5d5;
+
+            font-size:
+                10px;
+
+        }
+
+
+        .program-footer {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap: 15px;
+
+        }
+
+
+        .status {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap: 7px;
+
+            color:
+                #58e69a;
+
+            font-size:
+                10px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .status span {
+
+            width: 6px;
+
+            height: 6px;
+
+            border-radius:
+                50%;
+
+            background:
+                #49dd8c;
+
+            box-shadow:
+                0 0 9px
+                #49dd8c;
+
+        }
+
+
+        .consult {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap: 7px;
+
+            padding:
+                11px 15px;
+
+            border-radius:
+                8px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #15955c,
+                    #087143
+                );
+
+            color:
+                white;
+
+            text-decoration:
+                none;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            transition:
+                .3s;
+
+            box-shadow:
+                0 7px 20px
+                rgba(18,145,88,.15);
+
+        }
+
+
+        .consult:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 12px 28px
+                rgba(18,145,88,.25);
+
+        }
+
+
+        /* =====================================================
+           FLECHAS LATERALES
+        ====================================================== */
+
+        .carousel-btn {
+
+            position:
+                absolute;
+
+            top:
+                50%;
+
+            transform:
+                translateY(-50%);
+
+            z-index:
+                20;
+
+            width:
+                48px;
+
+            height:
+                48px;
+
+            border-radius:
+                50%;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            cursor:
+                pointer;
+
+            border:
+                1px solid
+                rgba(255,255,255,.13);
+
+            background:
+                rgba(5,18,36,.82);
+
+            backdrop-filter:
+                blur(14px);
+
+            color:
+                white;
+
+            transition:
+                .3s;
+
+            box-shadow:
+                0 12px 35px
+                rgba(0,0,0,.25);
+
+        }
+
+
+        .carousel-btn:hover {
+
+            border-color:
+                rgba(201,162,39,.65);
+
+            color:
+                var(--gold-light);
+
+            background:
+                rgba(201,162,39,.09);
+
+            box-shadow:
+                0 0 25px
+                rgba(201,162,39,.13);
+
+        }
+
+
+        #prevProgram {
+
+            left:
+                0;
+
+        }
+
+
+        #nextProgram {
+
+            right:
+                0;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .hero {
+
+            min-height:
+                90vh;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            padding-top:
+                130px;
+
+        }
+
+
+        .hero-container {
+
+            max-width:
+                1300px;
+
+            width:
+                100%;
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1.05fr .95fr;
+
+            gap:
+                70px;
+
+            align-items:
+                center;
+
+        }
+
+
+        .eyebrow {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            padding:
+                7px 13px;
+
+            border-radius:
+                50px;
+
+            background:
+                rgba(201,162,39,.06);
+
+            border:
+                1px solid
+                rgba(201,162,39,.32);
+
+            color:
+                var(--gold-light);
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                1.5px;
+
+            text-transform:
+                uppercase;
+
+            margin-bottom:
+                20px;
+
+        }
+
+
+        .eyebrow span {
+
+            width:
+                6px;
+
+            height:
+                6px;
+
+            border-radius:
+                50%;
+
+            background:
+                #45e48b;
+
+            box-shadow:
+                0 0 10px
+                #45e48b;
+
+        }
+
+
+        .hero h1 {
+
+            font-family:
+                'Space Grotesk';
+
+            font-size:
+                clamp(43px,6vw,76px);
+
+            line-height:
+                .98;
+
+            letter-spacing:
+                -3px;
+
+            margin:
+                0;
+
+        }
+
+
+        .hero h1 strong {
+
+            display:
+                block;
+
+            background:
+                linear-gradient(
+                    100deg,
+                    #ffffff 15%,
+                    #e5cc70 60%,
+                    #a77d0c
+                );
+
+            -webkit-background-clip:
+                text;
+
+            color:
+                transparent;
+
+        }
+
+
+        .hero-description {
+
+            max-width:
+                650px;
+
+            color:
+                #a2b2c7;
+
+            font-size:
+                16px;
+
+            line-height:
+                1.8;
+
+            margin:
+                26px 0;
+
+        }
+
+
+        .hero-actions {
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                12px;
+
+        }
+
+
+        .btn-primary {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            padding:
+                13px 20px;
+
+            border-radius:
+                8px;
+
+            text-decoration:
+                none;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #d7b33e,
+                    #a78317
+                );
+
+            color:
+                #0b0d10;
+
+            font-size:
+                12px;
+
+            font-weight:
+                800;
+
+            transition:
+                .3s;
+
+            box-shadow:
+                0 10px 30px
+                rgba(201,162,39,.14);
+
+        }
+
+
+        .btn-primary:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 16px 40px
+                rgba(201,162,39,.24);
+
+        }
+
+
+        .btn-secondary {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            padding:
+                13px 20px;
+
+            border-radius:
+                8px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            background:
+                rgba(255,255,255,.035);
+
+            color:
+                white;
+
+            text-decoration:
+                none;
+
+            font-size:
+                12px;
+
+            transition:
+                .3s;
+
+        }
+
+
+        .btn-secondary:hover {
+
+            background:
+                rgba(255,255,255,.075);
+
+            border-color:
+                rgba(255,255,255,.25);
+
+        }
+
+
+        /* =====================================================
+           HERO VISUAL
+        ====================================================== */
+
+        .hero-visual {
+
+            position:
+                relative;
+
+        }
+
+
+        .hero-card {
+
+            position:
+                relative;
+
+            min-height:
+                450px;
+
+            overflow:
+                hidden;
+
+            border-radius:
+                25px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.10);
+
+            background:
+                rgba(9,29,55,.6);
+
+            backdrop-filter:
+                blur(15px);
+
+            box-shadow:
+                0 35px 100px
+                rgba(0,0,0,.35);
+
+        }
+
+
+        .hero-card::before {
+
+            content:
+                '';
+
+            position:
+                absolute;
+
+            inset:
+                -2px;
+
+            border-radius:
+                inherit;
+
+            padding:
+                1px;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    transparent,
+                    rgba(201,162,39,.4),
+                    transparent,
+                    rgba(13,110,253,.3),
+                    transparent
+                );
+
+            mask:
+                linear-gradient(#000 0 0) content-box,
+                linear-gradient(#000 0 0);
+
+            mask-composite:
+                exclude;
+
+            pointer-events:
+                none;
+
+            animation:
+                borderFlow 7s linear infinite;
+
+        }
+
+
+        @keyframes borderFlow {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+
+        }
+
+
+        .hero-card img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            min-height:
+                450px;
+
+            object-fit:
+                cover;
+
+            opacity:
+                .72;
+
+        }
+
+
+        .hero-overlay {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            background:
+
+                linear-gradient(
+                    to top,
+                    #06152e 0%,
+                    rgba(6,21,46,.7) 35%,
+                    rgba(6,21,46,.05) 80%
+                );
+
+        }
+
+
+        .hero-card-content {
+
+            position:
+                absolute;
+
+            left:
+                30px;
+
+            right:
+                30px;
+
+            bottom:
+                30px;
+
+        }
+
+
+        .hero-card-content small {
+
+            color:
+                var(--gold-light);
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                2px;
+
+            font-size:
+                10px;
+
+        }
+
+
+        .hero-card-content h3 {
+
+            font-family:
+                'Space Grotesk';
+
+            font-size:
+                29px;
+
+            line-height:
+                1.1;
+
+            margin:
+                8px 0;
+
+        }
+
+
+        /* =====================================================
+           SOCIAL
+        ====================================================== */
+
+        .social-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(5,1fr);
+
+            gap:
+                14px;
+
+        }
+
+
+        .social-card {
+
+            position:
+                relative;
+
+            padding:
+                25px 19px;
+
+            border-radius:
+                16px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.055),
+                    rgba(255,255,255,.015)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            text-decoration:
+                none;
+
+            color:
+                white;
+
+            backdrop-filter:
+                blur(12px);
+
+            overflow:
+                hidden;
+
+            transition:
+                .35s;
+
+        }
+
+
+        .social-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(201,162,39,.35);
+
+            box-shadow:
+                0 25px 55px
+                rgba(0,0,0,.28);
+
+        }
+
+
+        .social-icon {
+
+            width:
+                45px;
+
+            height:
+                45px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                12px;
+
+            background:
+                rgba(255,255,255,.06);
+
+            margin-bottom:
+                18px;
+
+        }
+
+
+        .social-card h3 {
+
+            font-family:
+                'Space Grotesk';
+
+            margin:
+                0 0 7px;
+
+        }
+
+
+        .social-card p {
+
+            color:
+                #8193a9;
+
+            font-size:
+                11px;
+
+            line-height:
+                1.55;
+
+            margin:
+                0;
+
+        }
+
+
+        .social-arrow {
+
+            position:
+                absolute;
+
+            right:
+                15px;
+
+            top:
+                17px;
+
+            color:
+                #64768c;
+
+        }
+
+
+        /* =====================================================
+           CTA
+        ====================================================== */
+
+        .cta-box {
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            padding:
+                70px 30px;
+
+            border-radius:
+                25px;
+
+            text-align:
+                center;
+
+            border:
+                1px solid
+                rgba(201,162,39,.18);
+
+            background:
+
+                linear-gradient(
+                    120deg,
+                    rgba(13,48,90,.75),
+                    rgba(6,20,39,.78)
+                );
+
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,.22);
+
+        }
+
+
+        .cta-box::before {
+
+            content:
+                '';
+
+            position:
+                absolute;
+
+            width:
+                450px;
+
+            height:
+                450px;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(201,162,39,.07);
+
+            filter:
+                blur(90px);
+
+            top:
+                -280px;
+
+            right:
+                -100px;
+
+        }
+
+
+        .cta-box h2 {
+
+            font-family:
+                'Space Grotesk';
+
+            font-size:
+                clamp(32px,5vw,52px);
+
+            margin:
+                0 0 14px;
+
+        }
+
+
+        .cta-box p {
+
+            max-width:
+                620px;
+
+            margin:
+                auto auto 28px;
+
+            color:
+                #9aabc0;
+
+            line-height:
+                1.7;
+
+            font-size:
+                14px;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+
+            padding:
+                70px 6% 25px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.07);
+
+            background:
+                rgba(2,8,18,.72);
+
+        }
+
+
+        .footer-grid {
+
+            max-width:
+                1300px;
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1.1fr .9fr;
+
+            gap:
+                60px;
+
+            align-items:
+                center;
+
+        }
+
+
+        .footer-image {
+
+            width:
+                100%;
+
+            height:
+                250px;
+
+            object-fit:
+                cover;
+
+            border-radius:
+                17px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.08);
+
+            opacity:
+                .76;
+
+        }
+
+
+        .footer-info h3 {
+
+            font-family:
+                'Space Grotesk';
+
+            font-size:
+                27px;
+
+            margin:
+                8px 0 15px;
+
+        }
+
+
+        .address {
+
+            display:
+                flex;
+
+            gap:
+                11px;
+
+            color:
+                #91a3b9;
+
+            line-height:
+                1.7;
+
+            font-size:
+                13px;
+
+            margin-bottom:
+                22px;
+
+        }
+
+
+        .address svg {
+
+            color:
+                var(--gold-light);
+
+            flex-shrink:
+                0;
+
+        }
+
+
+        .footer-bottom {
+
+            max-width:
+                1300px;
+
+            margin:
+                50px auto 0;
+
+            padding-top:
+                20px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.06);
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            color:
+                #607289;
+
+            font-size:
+                10px;
+
+        }
+
+
+        /* =====================================================
+           REVEAL
+        ====================================================== */
+
+        .reveal {
+
+            opacity:
+                0;
+
+            transform:
+                translateY(30px);
+
+            transition:
+                opacity .8s ease,
+                transform .8s ease;
+
+        }
+
+
+        .reveal.show {
+
+            opacity:
+                1;
+
+            transform:
+                translateY(0);
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE TABLET
+        ====================================================== */
+
+        @media(max-width:1050px) {
+
+            .social-grid {
+
+                grid-template-columns:
+                    repeat(3,1fr);
+
+            }
+
+
+            .hero-container {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .hero-visual {
+
+                max-width:
+                    750px;
+
+                width:
+                    100%;
+
+                margin:
+                    auto;
+
+            }
+
+
+            .program-card {
+
+                flex-basis:
+                    70%;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE CELULAR
+        ====================================================== */
+
+        @media(max-width:760px) {
+
+            header {
+
+                padding:
+                    14px 5%;
+
+            }
+
+
+            .nav-links {
+
+                display:
+                    none;
+
+                position:
+                    absolute;
+
+                top:
+                    72px;
+
+                left:
+                    5%;
+
+                right:
+                    5%;
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    stretch;
+
+                gap:
+                    15px;
+
+                padding:
+                    20px;
+
+                background:
+                    rgba(4,15,30,.96);
+
+                backdrop-filter:
+                    blur(22px);
+
+                border:
+                    1px solid
+                    rgba(255,255,255,.08);
+
+                border-radius:
+                    15px;
+
+            }
+
+
+            .nav-links.open {
+
+                display:
+                    flex;
+
+            }
+
+
+            .mobile-menu {
+
+                display:
+                    block;
+
+            }
+
+
+            section {
+
+                padding:
+                    80px 5%;
+
+            }
+
+
+            #posgrados {
+
+                padding-top:
+                    115px;
+
+            }
+
+
+            .program-heading {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    15px;
+
+            }
+
+
+            /*
+               IMPORTANTE:
+               AQUÍ mantenemos las flechas
+               A LOS COSTADOS.
+            */
+
+            .carousel-wrapper {
+
+                padding:
+                    0 34px;
+
+            }
+
+
+            .program-card {
+
+                flex-basis:
+                    88%;
+
+            }
+
+
+            .carousel-btn {
+
+                width:
+                    42px;
+
+                height:
+                    42px;
+
+                background:
+                    rgba(4,15,30,.9);
+
+            }
+
+
+            #prevProgram {
+
+                left:
+                    -2px;
+
+            }
+
+
+            #nextProgram {
+
+                right:
+                    -2px;
+
+            }
+
+
+            .program-image {
+
+                height:
+                    245px;
+
+            }
+
+
+            .program-content {
+
+                padding:
+                    21px;
+
+            }
+
+
+            .program-content h3 {
+
+                font-size:
+                    21px;
+
+            }
+
+
+            .program-footer {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+            }
+
+
+            .hero {
+
+                padding-top:
+                    120px;
+
+            }
+
+
+            .hero h1 {
+
+                letter-spacing:
+                    -2px;
+
+            }
+
+
+            .hero-description {
+
+                font-size:
+                    14px;
+
+            }
+
+
+            .hero-card,
+            .hero-card img {
+
+                min-height:
+                    350px;
+
+            }
+
+
+            .social-grid {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+            }
+
+
+            .footer-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .footer-bottom {
+
+                flex-direction:
+                    column;
+
+                gap:
+                    8px;
+
+                text-align:
+                    center;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE CELULAR PEQUEÑO
+        ====================================================== */
+
+        @media(max-width:480px) {
+
+            .brand span {
+
+                font-size:
+                    11px;
+
+            }
+
+
+            .brand img {
+
+                width:
+                    37px;
+
+                height:
+                    37px;
+
+            }
+
+
+            .section-heading h2 {
+
+                letter-spacing:
+                    -1px;
+
+            }
+
+
+            .social-grid {
+
+                gap:
+                    9px;
+
+            }
+
+
+            .social-card {
+
+                padding:
+                    19px 14px;
+
+            }
+
+
+            .social-card p {
+
+                font-size:
+                    10px;
+
+            }
+
+
+            .program-card {
+
+                flex-basis:
+                    91%;
+
+            }
+
+
+            .carousel-wrapper {
+
+                padding:
+                    0 31px;
+
+            }
+
+
+            .program-image {
+
+                height:
+                    220px;
+
+            }
+
+
+            .program-type {
+
+                font-size:
+                    9px;
+
+            }
+
+
+            .program-content h3 {
+
+                font-size:
+                    20px;
+
+            }
+
+
+            .hero-actions {
+
+                flex-direction:
+                    column;
+
+            }
+
+
+            .btn-primary,
+            .btn-secondary {
+
+                justify-content:
+                    center;
+
+            }
+
+
+            .cta-box {
+
+                padding:
+                    50px 22px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         FONDOS
+    ====================================================== -->
+
+    <canvas id="particles"></canvas>
+
+    <div class="grid-background"></div>
+
+    <div class="aurora one"></div>
+
+    <div class="aurora two"></div>
+
+    <div class="aurora three"></div>
+
+
+    <!-- =====================================================
+         LOADER
+    ====================================================== -->
+
+    <div id="loader">
+
+        <div class="loader-content">
+
+            <div class="loader-logo-wrapper">
+
+                <!-- CAMBIA ESTA IMAGEN -->
+
+                <img
+                    src="image/logo.jpeg"
+                    class="loader-logo"
+                    alt="Logo Posgrado"
+                >
+
+                <div class="loader-ring"></div>
+
+            </div>
+
+            <div class="loader-text">
+
+                POSGRADO · UPEA - SEDE LA PAZ
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header id="header">
+
+        <nav class="nav">
+
+            <a
+                href="#posgrados"
+                class="brand"
+            >
+
+                <!-- CAMBIA ESTA IMAGEN -->
+
+                <img
+                    src="image/logo.jpeg"
+                    alt="Logo"
+                >
+
+                <span>
+                    POSGRADO UPEA - SEDE LA PAZ
+                </span>
+
+            </a>
+
+
+            <div
+                class="nav-links"
+                id="navLinks"
+            >
+
+                <a href="#posgrados">
+                    Posgrados
+                </a>
+
+                <a href="#inicio">
+                    Nosotros
+                </a>
+
+                <a href="#redes">
+                    Redes sociales
+                </a>
+
+                <a href="#ubicacion">
+                    Ubicación
+                </a>
+
+                <a
+                    href="TU_LINK_WHATSAPP"
+                    target="_blank"
+                    class="nav-button"
+                >
+                    Contáctanos
+                </a>
+
+            </div>
+
+
+            <button
+                class="mobile-menu"
+                id="mobileMenu"
+            >
+
+                <i data-lucide="menu"></i>
+
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- =================================================
+             1. POSGRADOS VIGENTES
+        ================================================== -->
+
+        <section id="posgrados">
+
+            <div class="container">
+
+
+                <div class="section-heading program-heading reveal">
+
+                    <div>
+
+                        <div class="tag">
+                            Oferta académica
+                        </div>
+
+                        <h2>
+                            Posgrados vigentes.
+                        </h2>
+
+                        <p>
+                            Descubre nuestros programas académicos
+                            disponibles actualmente y encuentra la
+                            especialización que te llevará al siguiente nivel.
+                        </p>
+
+                    </div>
+
+
+                    <div class="live-badge">
+
+                        <span class="live-dot"></span>
+
+                        Convocatorias vigentes
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARRUSEL -->
+
+                <div class="carousel-wrapper">
+
+
+                    <!-- FLECHA IZQUIERDA -->
+
+                    <button
+                        class="carousel-btn"
+                        id="prevProgram"
+                        aria-label="Anterior"
+                    >
+
+                        <i
+                            data-lucide="chevron-left"
+                            size="20"
+                        ></i>
+
+                    </button>
+
+
+                    <!-- TARJETAS -->
+
+                    <div
+                        class="program-track"
+                        id="programTrack"
+                    >
+
+
+                        <!-- =============================
+                             POSGRADO 1
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/redaccion comercial .jpeg"
+                                    alt="Diplomado"
+                                >
+
+                                <span class="program-type">
+                                    Diplomado
+                                </span>
+
+                                <span class="program-number">
+                                    01
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                    Diplomado en Redacción Comercial y Secretarial
+                                </h3>
+
+                                <p>
+                                    Un programa diseñado para dominar la escritura 
+                                    corporativa. Aprende a redactar documentos oficiales 
+                                    con precisión, agiliza la comunicación administrativa 
+                                    y proyecta una imagen 100% profesional y sin errores en 
+                                    cualquier institución.
+                                </p>
+
+
+                                <div class="program-meta">
+
+                                    <span class="meta">
+                                        <i data-lucide="clock" size="12"></i>
+                                        5 meses
+                                    </span>
+
+                                    <span class="meta">
+                                        <i data-lucide="monitor" size="12"></i>
+                                        100% Virtual
+                                    </span>
+
+                                    <span class="meta">
+                                        <i data-lucide="award" size="12"></i>
+                                        Certificación
+                                    </span>
+                                    <span class="meta">
+                                        <i data-lucide="clock" size="12"></i>
+                                        880 HRS
+                                    </span>
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        ULTIMOS DÍAS DE INCRIPCIÓN
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href="https://wa.link/0v3c1n"
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        Consultar
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- =============================
+                             POSGRADO 2
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/ciencias_educacion.jpeg"
+                                    alt="Maestría"
+                                >
+
+                                <span class="program-type">
+                                    Doctorado
+                                </span>
+
+                                <span class="program-number">
+                                    02
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                    Doctorado en Ciencias de la Educación e Investigación Científica
+                                </h3>
+
+                                <p>
+                                    Es un programa de alto nivel académico enfocado 
+                                    en formar investigadores capaces de generar nuevo 
+                                    conocimiento, liderar procesos de transformación
+                                    educativa y resolver problemas complejos en el ámbito 
+                                    pedagógico y científico a través de metodologías avanzadas 
+                                    de investigación.
+                                </p>
+
+
+                                <div class="program-meta">
+                                    <span class="meta">
+                                        <i data-lucide="graduation-cap" size="12"></i>
+                                        Doctorado
+                                    </span>
+                                    <span class="meta">
+                                        <i data-lucide="clock" size="12"></i>
+                                        3 Años
+                                    </span>
+
+                                    <span class="meta">
+                                        <i data-lucide="monitor" size="12"></i>
+                                        Virtual
+                                    </span>
+
+                                    <span class="meta">
+                                        <i data-lucide="award" size="12"></i>
+                                        Certificación
+                                    </span>
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        ULTIMOS DÍAS DE INSCRIPCIÓN
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href="https://wa.link/yv1oxk"
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        Consultar
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- =============================
+                             POSGRADO 3
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/inteligencia_artificial.jpeg"
+                                    alt="Doctorado"
+                                >
+
+                                <span class="program-type">
+                                    Maestria
+                                </span>
+
+                                <span class="program-number">
+                                    03
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                    Maestria en Educación Superior e Inteligencia Artificial
+                                </h3>
+
+                                <p>
+                                    Es un programa innovador que fusiona la pedagogía 
+                                    universitaria con las nuevas tecnologías. Capacita 
+                                    a los profesionales para integrar herramientas de IA 
+                                    en el diseño curricular, la enseñanza y la evaluación, 
+                                    transformando el aula moderna y preparando a los 
+                                    estudiantes para el futuro digital.
+                                </p>
+
+
+                                <div class="program-meta">
+
+                                    <span class="meta">
+                                        <i data-lucide="graduation-cap" size="12"></i>
+                                        Maestria
+                                    </span>
+
+                                    <span class="meta">
+                                        <i data-lucide="monitor" size="12"></i>
+                                        Virtual
+                                    </span>
+
+                                    <span class="meta">
+                                        <i data-lucide="award" size="12"></i>
+                                        Certificación
+                                    </span>
+                                    <span class="meta">
+                                        <i data-lucide="clock" size="12"></i>
+                                        16 Meses
+                                    </span>
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        INSCRIPCIONES ABIERTAS
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href="https://wa.link/falmlx"
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        Consultar
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- =============================
+                             POSGRADO 4
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/educacion_superior.jpeg"
+                                    alt="Especialidad"
+                                >
+
+                                <span class="program-type">
+                                    Diplomado
+                                </span>
+
+                                <span class="program-number">
+                                    04
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                   Diplomado en Educación Superior e Inteligencia Artificial 
+                                </h3>
+
+                                <p>
+                                    Es un programa práctico diseñado para docentes y 
+                                    profesionales que buscan transformar su práctica
+                                    pedagógica. Aprende a integrar herramientas y modelos 
+                                    de inteligencia artificial en tus clases para innovar 
+                                    en la enseñanza, optimizar la evaluación y potenciar el 
+                                    aprendizaje de tus estudiantes.
+                                </p>
+
+
+                                <div class="program-meta">
+
+                                    <span class="meta">
+                                        <i data-lucide="clock" size="12"></i>
+                                        5 Meses
+                                    </span>
+
+                                    <span class="meta">
+                                        <i data-lucide="monitor" size="12"></i>
+                                        Virtual
+                                    </span>
+
+                                    
+                                    <span class="meta">
+                                        <i data-lucide="clock" size="12"></i>
+                                        880 HRS
+                                    </span>
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        INSCRIPCIONES ABIERTAS
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href="https://wa.link/jjg03i"
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        Consultar
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                    </div>
+
+
+                    <!-- FLECHA DERECHA -->
+
+                    <button
+                        class="carousel-btn"
+                        id="nextProgram"
+                        aria-label="Siguiente"
+                    >
+
+                        <i
+                            data-lucide="chevron-right"
+                            size="20"
+                        ></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             2. HERO / PRESENTACIÓN
+        ================================================== -->
+
+        <section
+            class="hero"
+            id="inicio"
+        >
+
+            <div class="hero-container">
+
+
+                <div class="reveal">
+
+                    <div class="eyebrow">
+
+                        <span></span>
+
+                        Formación de alto nivel
+
+                    </div>
+
+
+                    <h1>
+
+                        Da el siguiente paso.
+
+                        <strong>
+                            Especialízate.
+                        </strong>
+
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        Impulsa tu crecimiento profesional mediante
+                        programas de posgrado orientados a la formación,
+                        investigación e innovación.
+
+                    </p>
+
+
+                    <div class="hero-actions">
+
+                        <a
+                            href="#posgrados"
+                            class="btn-primary"
+                        >
+
+                            Explorar posgrados
+
+                            <i data-lucide="arrow-up"></i>
+
+                        </a>
+
+
+                        <a
+                            href="#redes"
+                            class="btn-secondary"
+                        >
+
+                            Conoce nuestras redes
+
+                            <i data-lucide="share-2"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-visual reveal">
+
+                    <div class="hero-card">
+
+                        <!-- CAMBIA ESTA IMAGEN -->
+
+                        <img
+                            src="image/logo.jpeg"
+                            alt="Posgrados"
+                        >
+
+                        <div class="hero-overlay"></div>
+
+
+                        <div class="hero-card-content">
+
+                            <small>
+                                Excelencia académica
+                            </small>
+
+                            <h3>
+                                Tu próximo logro académico comienza aquí.
+                            </h3>
+
+                            <p class="text-gray-300 text-sm">
+
+                                Diplomados · Maestrías · Doctorados
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             3. REDES SOCIALES
+        ================================================== -->
+
+        <section id="redes">
+
+            <div class="container">
+
+
+                <div class="section-heading reveal">
+
+                    <div class="tag">
+                        Conecta con nosotros
+                    </div>
+
+                    <h2>
+                        Estamos donde tú estás.
+                    </h2>
+
+                    <p>
+                        Mantente informado sobre convocatorias,
+                        actividades académicas, eventos y nuevas
+                        oportunidades de formación.
+                    </p>
+
+                </div>
+
+
+                <div class="social-grid">
+
+
+                    <!-- WHATSAPP -->
+
+                    <a
+                        href="https://wa.link/272htl"
+                        target="_blank"
+                        class="social-card reveal"
+                    >
+
+                        <div class="social-arrow">
+                            <i
+                                data-lucide="external-link"
+                                size="16"
+                            ></i>
+                        </div>
+
+                        <div class="social-icon">
+                            <img src="image/whatsap.webp" alt="WHATSAPP">
+                        </div>
+
+                        <h3>
+                            WhatsApp
+                        </h3>
+
+                        <p>
+                            Atención directa y consultas sobre nuestros
+                            programas académicos.
+                        </p>
+
+                    </a>
+
+
+                    <!-- FACEBOOK -->
+
+                    <a
+                        href="https://www.facebook.com/share/19fcPxa18F/"
+                        target="_blank"
+                        class="social-card reveal"
+                    >
+
+                        <div class="social-arrow">
+                            <i
+                                data-lucide="external-link"
+                                size="16"
+                            ></i>
+                        </div>
+
+                        <div class="social-icon">
+                            <img src="image/facebook.png" alt="WHATSAPP">
+                        </div>
+
+                        <h3>
+                            Facebook
+                        </h3>
+
+                        <p>
+                            Noticias, convocatorias y actividades
+                            institucionales.
+                        </p>
+
+                    </a>
+
+
+                    <!-- INSTAGRAM -->
+
+                    <a
+                        href="https://www.instagram.com/posgrado.upea.la.paz?igsi=MXdtbGk3Ym9odmZzYw=="
+                        target="_blank"
+                        class="social-card reveal"
+                    >
+
+                        <div class="social-arrow">
+                            <i
+                                data-lucide="external-link"
+                                size="16"
+                            ></i>
+                        </div>
+
+                        <div class="social-icon">
+                            <img src="image/instagram.png" alt="WHATSAPP">
+                        </div>
+
+                        <h3>
+                            Instagram
+                        </h3>
+
+                        <p>
+                            Descubre nuestro día a día y contenido
+                            académico.
+                        </p>
+
+                    </a>
+
+
+                    <!-- TIKTOK -->
+
+                    <a
+                        href="https://www.tiktok.com/@posgradosedelapaz?_r=1&_t=ZS-994RrNcQebE"
+                        target="_blank"
+                        class="social-card reveal"
+                    >
+
+                        <div class="social-arrow">
+                            <i
+                                data-lucide="external-link"
+                                size="16"
+                            ></i>
+                        </div>
+
+                        <div class="social-icon">
+                            <img src="image/tiktok.png" alt="WHATSAPP">
+                        </div>
+
+                        <h3>
+                            TikTok
+                        </h3>
+
+                        <p>
+                            Información y contenido educativo
+                            en formato corto.
+                        </p>
+
+                    </a>
+
+
+                    <!-- WEB -->
+
+                    <a
+                        href="#"
+                        target="_blank"
+                        class="social-card reveal"
+                    >
+
+                        <div class="social-arrow">
+                            <i
+                                data-lucide="external-link"
+                                size="16"
+                            ></i>
+                        </div>
+
+                        <div class="social-icon">
+                            <i data-lucide="globe"></i>
+                        </div>
+
+                        <h3>
+                            Sitio web
+                        </h3>
+
+                        <p>
+                            Toda nuestra información académica
+                            e institucional.
+                        </p>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CTA
+        ================================================== -->
+
+        <section>
+
+            <div class="container">
+
+                <div class="cta-box reveal">
+
+                    <h2>
+                        ¿Listo para subir de nivel?
+                    </h2>
+
+                    <p>
+                        Consulta nuestros programas vigentes y recibe
+                        información directamente de nuestro equipo.
+                    </p>
+
+
+                   
+
+                    <a
+                        href="https://wa.link/272htl"
+                        target="_blank"
+                        class="btn-primary"
+                    >
+
+                        <div class="social-arrow">
+                            <i
+                                data-lucide="external-link"
+                                size="16"
+                            ></i>
+                        </div>
+
+                        <div class="social-icon">
+                            <img src="image/whatsap.webp" alt="WHATSAPP">
+                        </div>
+
+                        Hablar por WhatsApp
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer id="ubicacion">
+
+        <div class="footer-grid">
+
+
+            <div class="reveal">
+
+               
+
+                <iframe
+                    src="https://www.bing.com/maps/embed?h=300&w=600&cp=-16.502047~-68.138616&lvl=17"
+                    width="100%"
+                    height="250"
+                    style="border:0; border-radius:12px;"
+                    loading="lazy">
+                </iframe>
+
+            </div>
+
+
+            <div class="footer-info reveal">
+
+                <div class="tag">
+                    Visítanos
+                </div>
+
+
+                <h3>
+                    Encuéntranos.
+                </h3>
+
+
+                <div class="address">
+
+                    <i data-lucide="map-pin"></i>
+
+                    <div>
+
+                        <strong class="text-white">
+                            Posgrado UPEA - SEDE LA PAZ
+                        </strong>
+
+                        <br>
+
+                        Calle Riobamba, Entre Zoilo Flores y Boquerón 
+                        PJE. Robamba Nº.12, Zonoa San Pedro
+
+                        <br>
+
+                        La Paz, Bolivia
+
+                    </div>
+
+                </div>
+
+
+               
+
+                <a
+                    href="https://www.google.com/maps?q=-16.502047,-68.138616"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                
+
+                    <i data-lucide="map"></i>
+
+                    Ver ubicación
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 Posgrado UPEA - Sede La Paz. Todos los derechos reservados.
+            </span>
+
+            <span>
+                Formación · Investigación · Innovación
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           ICONOS
+        ====================================================== */
+
+        lucide.createIcons();
+
+
+        /* =====================================================
+           LOADER
+        ====================================================== */
+
+        window.addEventListener(
+            'load',
+            () => {
+
+                setTimeout(
+                    () => {
+
+                        document
+                            .getElementById('loader')
+                            .classList
+                            .add('hidden');
+
+                    },
+                    2000
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        const header =
+            document.getElementById('header');
+
+
+        window.addEventListener(
+            'scroll',
+            () => {
+
+                if(window.scrollY > 30) {
+
+                    header.classList.add('scrolled');
+
+                } else {
+
+                    header.classList.remove('scrolled');
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           MENU MOBILE
+        ====================================================== */
+
+        const mobileMenu =
+            document.getElementById('mobileMenu');
+
+        const navLinks =
+            document.getElementById('navLinks');
+
+
+        mobileMenu.addEventListener(
+            'click',
+            () => {
+
+                navLinks.classList.toggle('open');
+
+            }
+        );
+
+
+        document
+            .querySelectorAll('.nav-links a')
+            .forEach(
+                link => {
+
+                    link.addEventListener(
+                        'click',
+                        () => {
+
+                            navLinks.classList.remove('open');
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           CARRUSEL
+           MANUAL - SIN AUTOMÁTICO
+        ====================================================== */
+
+        const track =
+            document.getElementById('programTrack');
+
+        const nextButton =
+            document.getElementById('nextProgram');
+
+        const prevButton =
+            document.getElementById('prevProgram');
+
+
+        function getScrollAmount() {
+
+            const card =
+                track.querySelector('.program-card');
+
+            if(!card) {
+
+                return 350;
+
+            }
+
+            return card.offsetWidth + 24;
+
+        }
+
+
+        nextButton.addEventListener(
+            'click',
+            () => {
+
+                track.scrollBy({
+
+                    left:
+                        getScrollAmount(),
+
+                    behavior:
+                        'smooth'
+
+                });
+
+            }
+        );
+
+
+        prevButton.addEventListener(
+            'click',
+            () => {
+
+                track.scrollBy({
+
+                    left:
+                        -getScrollAmount(),
+
+                    behavior:
+                        'smooth'
+
+                });
+
+            }
+        );
+
+
+        /* =====================================================
+           SWIPE MOBILE
+        ====================================================== */
+
+        let startX = 0;
+
+        let endX = 0;
+
+
+        track.addEventListener(
+            'touchstart',
+            event => {
+
+                startX =
+                    event.changedTouches[0].screenX;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        track.addEventListener(
+            'touchend',
+            event => {
+
+                endX =
+                    event.changedTouches[0].screenX;
+
+
+                const distance =
+                    startX - endX;
+
+
+                if(Math.abs(distance) > 45) {
+
+                    if(distance > 0) {
+
+                        track.scrollBy({
+
+                            left:
+                                getScrollAmount(),
+
+                            behavior:
+                                'smooth'
+
+                        });
+
+                    } else {
+
+                        track.scrollBy({
+
+                            left:
+                                -getScrollAmount(),
+
+                            behavior:
+                                'smooth'
+
+                        });
+
+                    }
+
+                }
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        /* =====================================================
+           REVEAL ANIMATION
+        ====================================================== */
+
+        const observer =
+            new IntersectionObserver(
+
+                entries => {
+
+                    entries.forEach(
+                        entry => {
+
+                            if(
+                                entry.isIntersecting
+                            ) {
+
+                                entry
+                                    .target
+                                    .classList
+                                    .add('show');
+
+                            }
+
+                        }
+                    );
+
+                },
+
+                {
+                    threshold:
+                        .10
+                }
+
+            );
+
+
+        document
+            .querySelectorAll('.reveal')
+            .forEach(
+                element => {
+
+                    observer.observe(element);
+
+                }
+            );
+
+
+        /* =====================================================
+           PARTICULAS PREMIUM
+        ====================================================== */
+
+        const canvas =
+            document.getElementById('particles');
+
+        const ctx =
+            canvas.getContext('2d');
+
+
+        let particles = [];
+
+
+        function resizeCanvas() {
+
+            canvas.width =
+                window.innerWidth;
+
+            canvas.height =
+                window.innerHeight;
+
+        }
+
+
+        function createParticles() {
+
+            particles = [];
+
+
+            const amount =
+                window.innerWidth < 600
+                    ? 35
+                    : 80;
+
+
+            for(
+                let i = 0;
+                i < amount;
+                i++
+            ) {
+
+                particles.push({
+
+                    x:
+                        Math.random()
+                        *
+                        canvas.width,
+
+                    y:
+                        Math.random()
+                        *
+                        canvas.height,
+
+                    vx:
+                        (Math.random() - .5)
+                        *
+                        .18,
+
+                    vy:
+                        (Math.random() - .5)
+                        *
+                        .18,
+
+                    size:
+                        Math.random()
+                        *
+                        1.4
+                        +
+                        .3,
+
+                    alpha:
+                        Math.random()
+                        *
+                        .6
+                        +
+                        .15,
+
+                    phase:
+                        Math.random()
+                        *
+                        Math.PI
+                        *
+                        2
+
+                });
+
+            }
+
+        }
+
+
+        function animateParticles(time) {
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+
+            particles.forEach(
+                particle => {
+
+                    particle.x +=
+                        particle.vx;
+
+                    particle.y +=
+                        particle.vy;
+
+
+                    if(
+                        particle.x < 0 ||
+                        particle.x > canvas.width
+                    ) {
+
+                        particle.vx *= -1;
+
+                    }
+
+
+                    if(
+                        particle.y < 0 ||
+                        particle.y > canvas.height
+                    ) {
+
+                        particle.vy *= -1;
+
+                    }
+
+
+                    const glow =
+                        particle.alpha
+                        *
+                        (
+                            .65
+                            +
+                            Math.sin(
+                                time * .0015
+                                +
+                                particle.phase
+                            )
+                            *
+                            .35
+                        );
+
+
+                    ctx.beginPath();
+
+
+                    ctx.arc(
+
+                        particle.x,
+
+                        particle.y,
+
+                        particle.size,
+
+                        0,
+
+                        Math.PI * 2
+
+                    );
+
+
+                    ctx.fillStyle =
+                        `rgba(220,190,85,${glow})`;
+
+
+                    ctx.fill();
+
+                }
+            );
+
+
+            requestAnimationFrame(
+                animateParticles
+            );
+
+        }
+
+
+        resizeCanvas();
+
+        createParticles();
+
+        requestAnimationFrame(
+            animateParticles
+        );
+
+
+        window.addEventListener(
+            'resize',
+            () => {
+
+                resizeCanvas();
+
+                createParticles();
+
+            }
+        );
+
+
+    </script>
+
+</body>
+
+</html>
