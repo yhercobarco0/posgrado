@@ -3145,10 +3145,12 @@
 
                                     <!-- CAMBIA EL WALINK -->
 
+                                    
                                     <a
-                                        href="https://wa.link/owtb9q"
+                                        href="https://wa.me/59163137484?text=Hola%2C%20me%20interesa%20obtener%20informaci%C3%B3n%20sobre%20el%20Curso%3A%20Investigaci%C3%B3n%20Cient%C3%ADfica%20e%20Inteligencia%20Artificial%20Version%20IX.%20%C2%BFMe%20comparten%20los%20requisitos%2C%20costos%20y%20fecha%20de%20inicio%3F"
                                         target="_blank"
-                                        class="consult"
+                                        class="consult whatsapp-link"
+                                        rel="noopener noreferrer"
                                     >
 
 
@@ -5195,6 +5197,167 @@
 
             }
         );
+
+    /* =========================================================
+       ENLACES DE WHATSAPP
+       Optimizado para TikTok + Android
+    ========================================================= */
+
+
+    document
+        .querySelectorAll('.whatsapp-link')
+        .forEach(link => {
+
+
+            link.addEventListener(
+                'click',
+                function(event) {
+
+
+                    const whatsappUrl = this.href;
+
+
+                    /* =========================================
+                       DETECTAR ANDROID
+                    ========================================== */
+
+                    const isAndroid =
+                        /Android/i.test(
+                            navigator.userAgent
+                        );
+
+
+                    /* =========================================
+                       DETECTAR TIKTOK
+                    ========================================== */
+
+                    const isTikTok =
+                        /TikTok/i.test(
+                            navigator.userAgent
+                        );
+
+
+                    /* =========================================
+                       SI ES ANDROID + TIKTOK
+                       Intentamos abrir WhatsApp directamente
+                    ========================================== */
+
+                    if (isAndroid && isTikTok) {
+
+
+                        event.preventDefault();
+
+
+                        try {
+
+
+                            /* =================================
+                               OBTENER EL NUMERO Y MENSAJE
+                            ================================= */
+
+                            const url =
+                                new URL(
+                                    whatsappUrl
+                                );
+
+
+                            const phone =
+                                url.pathname
+                                    .replace(
+                                        '/',
+                                        ''
+                                    );
+
+
+                            const message =
+                                url.searchParams.get(
+                                    'text'
+                                ) || '';
+
+
+                            /* =================================
+                               CREAR URL PARA WHATSAPP
+                            ================================= */
+
+                            const intentUrl =
+                                'intent://send/' +
+                                phone +
+                                '?text=' +
+                                encodeURIComponent(
+                                    message
+                                ) +
+                                '#Intent;' +
+                                'scheme=smsto;' +
+                                'package=com.whatsapp;' +
+                                'end';
+
+
+                            /* =================================
+                               INTENTAR ABRIR WHATSAPP
+                            ================================= */
+
+                            window.location.href =
+                                intentUrl;
+
+
+                            /* =================================
+                               RESPALDO
+
+                               Si TikTok bloquea el Intent,
+                               intentamos abrir wa.me
+                            ================================= */
+
+                            setTimeout(
+                                () => {
+
+                                    window.open(
+                                        whatsappUrl,
+                                        '_blank'
+                                    );
+
+                                },
+                                1500
+                            );
+
+
+                        } catch (error) {
+
+
+                            /* =================================
+                               SI OCURRE ALGUN ERROR,
+                               USAMOS EL ENLACE NORMAL
+                            ================================= */
+
+                            window.open(
+                                whatsappUrl,
+                                '_blank'
+                            );
+
+
+                        }
+
+
+                    }
+
+
+                    /* =========================================
+                       OTROS DISPOSITIVOS
+
+                       El navegador maneja el enlace normalmente.
+                       Por ejemplo:
+                       - Chrome
+                       - Safari
+                       - PC
+                       - Navegador normal
+                    ========================================== */
+
+
+                }
+            );
+
+
+        });
+
 
 
     </script>
