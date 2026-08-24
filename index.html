@@ -2744,7 +2744,130 @@
 
         }
 
-    </style>
+    
+
+        /* =====================================================
+           MEJORA DEL CARRUSEL EN CELULAR - MÁS GORDITO Y FLUIDO
+           No elimina ningún código anterior: solo mejora el diseño.
+        ====================================================== */
+
+        @media(max-width:760px) {
+
+            .carousel-wrapper {
+                padding: 0 10px;
+            }
+
+            .program-track {
+                gap: 16px;
+                padding: 12px 6px 34px;
+                scroll-snap-type: x mandatory;
+                scroll-padding-left: 6px;
+                overscroll-behavior-x: contain;
+            }
+
+            .program-card {
+                flex: 0 0 84%;
+                scroll-snap-align: center;
+                scroll-snap-stop: always;
+                border-radius: 28px;
+                box-shadow: 0 18px 50px rgba(0,0,0,.32);
+            }
+
+            .program-image {
+                height: 280px;
+            }
+
+            .program-content {
+                padding: 22px 22px 24px;
+            }
+
+            .program-content h3 {
+                font-size: 22px;
+                line-height: 1.12;
+            }
+
+            .program-content p {
+                font-size: 13px;
+                line-height: 1.7;
+            }
+
+            .carousel-btn {
+                width: 44px;
+                height: 44px;
+                top: 46%;
+                border: 1px solid rgba(201,162,39,.35);
+                background: rgba(3,11,24,.88);
+                box-shadow: 0 8px 30px rgba(0,0,0,.35);
+            }
+
+            #prevProgram { left: -10px; }
+            #nextProgram { right: -10px; }
+        }
+
+        @media(max-width:480px) {
+
+            .carousel-wrapper {
+                padding: 0 6px;
+            }
+
+            .program-track {
+                gap: 14px;
+                padding: 10px 4px 32px;
+            }
+
+            .program-card {
+                flex: 0 0 86%;
+                border-radius: 26px;
+            }
+
+            .program-image {
+                height: 265px;
+            }
+
+            .program-content {
+                padding: 20px;
+            }
+
+            .program-content h3 {
+                font-size: 20px;
+            }
+
+            .program-meta {
+                gap: 6px;
+                margin-bottom: 18px;
+            }
+
+            .meta {
+                padding: 7px 8px;
+            }
+
+            .program-footer {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .status {
+                font-size: 9px;
+                max-width: 52%;
+                line-height: 1.35;
+            }
+
+            .consult {
+                padding: 10px 13px;
+                flex-shrink: 0;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                top: 43%;
+            }
+
+            #prevProgram { left: -12px; }
+            #nextProgram { right: -12px; }
+        }
+
+</style>
 
 </head>
 
@@ -2945,9 +3068,106 @@
                         id="programTrack"
                     >
 
-
                         <!-- =============================
                              POSGRADO 1
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/curso_investigacion.jpeg"
+                                    alt="Especialidad"
+                                >
+
+                                <span class="program-type" style="color: #00ff2a;">
+                                    Curso
+                                </span>
+
+                                <span class="program-number">
+                                    01
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                   Investigación Científica e Inteligencia Artificial - VERSIÓN IX
+                                </h3>
+
+                                <p>
+                                    <!-- Aprende a integrar modelos de inteligencia artificial 
+                                    en tus clases para innovar en la enseñanza y potenciar el 
+                                    aprendizaje estudiantil. -->
+                                </p>
+
+
+                                <div class="program-meta">
+
+                                    <span class="meta">
+                                        <i data-lucide="clock" size="12"></i>
+                                        4 Semanas
+                                    </span>
+
+                                    <span class="meta">
+                                        <i data-lucide="monitor" size="12"></i>
+                                        Virtual
+                                    </span>
+                                    <span class="meta">
+                                        <i data-lucide="clock" size="12"></i>
+                                        clases: Domingos 15:00
+                                    </span>
+
+                                    
+                                    <span class="meta">
+                                        <i data-lucide="clock" size="12"></i>
+                                        240 HRS
+                                    </span>
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        INSCRIPCIONES ABIERTAS
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href="https://wa.link/owtb9q"
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        Consultar
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+                        <!-- =============================
+                             POSGRADO 2
                         ============================== -->
 
                         <article class="program-card reveal">
@@ -2961,12 +3181,12 @@
                                     alt="Diplomado"
                                 >
 
-                                <span class="program-type">
+                                <span class="program-type" style="color: #00fffb;">
                                     Diplomado
                                 </span>
 
                                 <span class="program-number">
-                                    01
+                                    02
                                 </span>
 
                             </div>
@@ -2979,9 +3199,9 @@
                                 </h3>
 
                                 <p>
-                                    Domina la escritura corporativa y redacta 
+                                    <!-- Domina la escritura corporativa y redacta 
                                     documentos oficiales con precisión, proyectando una imagen 
-                                    100% profesional.
+                                    100% profesional. -->
                                 </p>
 
 
@@ -2994,12 +3214,16 @@
 
                                     <span class="meta">
                                         <i data-lucide="monitor" size="12"></i>
-                                        100% Virtual
+                                        Virtual
+                                    </span>
+                                    <span class="meta">
+                                        <i data-lucide="monitor" size="12"></i>
+                                        Cobertura: Nacional
                                     </span>
 
                                     <span class="meta">
-                                        <i data-lucide="award" size="12"></i>
-                                        Certificación
+                                        <i data-lucide="clock" size="12"></i>
+                                        Clases: Sabados 16:00
                                     </span>
                                     <span class="meta">
                                         <i data-lucide="clock" size="12"></i>
@@ -3042,10 +3266,9 @@
                             </div>
 
                         </article>
-
-
-                        <!-- =============================
-                             POSGRADO 2
+                        
+                         <!-- =============================
+                             POSGRADO 3
                         ============================== -->
 
                         <article class="program-card reveal">
@@ -3055,16 +3278,16 @@
                                 <!-- CAMBIA ESTA IMAGEN -->
 
                                 <img
-                                    src="image/ciencias_educacion.jpeg"
-                                    alt="Maestría"
+                                    src="image/educacion_superior.jpeg"
+                                    alt="Especialidad"
                                 >
 
-                                <span class="program-type">
-                                    Doctorado
+                                <span class="program-type" style="color: #00fffb;">
+                                    Diplomado
                                 </span>
 
                                 <span class="program-number">
-                                    02
+                                    03
                                 </span>
 
                             </div>
@@ -3073,34 +3296,40 @@
                             <div class="program-content">
 
                                 <h3>
-                                    Doctorado en Ciencias de la Educación e Investigación Científica
+                                   Diplomado en Educación Superior E Inteligencia Artificial
                                 </h3>
 
                                 <p>
-                                    Desarrolla capacidades de investigación avanzada para 
-                                    liderar la transformación y resolver problemas complejos en 
-                                    el ámbito pedagógico.
+                                    <!-- Aprende a integrar modelos de inteligencia artificial 
+                                    en tus clases para innovar en la enseñanza y potenciar el 
+                                    aprendizaje estudiantil. -->
                                 </p>
 
 
                                 <div class="program-meta">
-                                    <span class="meta">
-                                        <i data-lucide="graduation-cap" size="12"></i>
-                                        Doctorado
-                                    </span>
+
                                     <span class="meta">
                                         <i data-lucide="clock" size="12"></i>
-                                        3 Años
+                                        5 Meses
                                     </span>
 
                                     <span class="meta">
                                         <i data-lucide="monitor" size="12"></i>
                                         Virtual
                                     </span>
-
                                     <span class="meta">
-                                        <i data-lucide="award" size="12"></i>
-                                        Certificación
+                                        <i data-lucide="monitor" size="12"></i>
+                                        Cobertura Nacional 
+                                    </span>
+                                    <span class="meta">
+                                        <i data-lucide="clock" size="12"></i>
+                                        clases: Domingos 16:00
+                                    </span>
+
+                                    
+                                    <span class="meta">
+                                        <i data-lucide="clock" size="12"></i>
+                                        880 HRS
                                     </span>
 
                                 </div>
@@ -3112,7 +3341,7 @@
 
                                         <span></span>
 
-                                        ULTIMOS DÍAS DE INSCRIPCIÓN
+                                        INSCRIPCIONES ABIERTAS
 
                                     </div>
 
@@ -3120,10 +3349,11 @@
                                     <!-- CAMBIA EL WALINK -->
 
                                     <a
-                                        href="https://wa.link/yv1oxk"
+                                        href="https://wa.link/jjg03i"
                                         target="_blank"
                                         class="consult"
                                     >
+
 
                                         <i
                                             data-lucide="message-circle"
@@ -3140,9 +3370,14 @@
 
                         </article>
 
+                        
+
+
+                        
+
 
                         <!-- =============================
-                             POSGRADO 3
+                             POSGRADO 4
                         ============================== -->
 
                         <article class="program-card reveal">
@@ -3156,12 +3391,12 @@
                                     alt="Doctorado"
                                 >
 
-                                <span class="program-type">
+                                <span class="program-type" style="color: #ffa200;">
                                     Maestria
                                 </span>
 
                                 <span class="program-number">
-                                    03
+                                    04
                                 </span>
 
                             </div>
@@ -3174,9 +3409,9 @@
                                 </h3>
 
                                 <p>
-                                    Capacítate para integrar inteligencia artificial en 
+                                    <!-- Capacítate para integrar inteligencia artificial en 
                                     la enseñanza superior, transformando el aula moderna y 
-                                    preparando a los estudiantes para el futuro digital.
+                                    preparando a los estudiantes para el futuro digital. -->
                                 </p>
 
 
@@ -3240,7 +3475,7 @@
 
 
                         <!-- =============================
-                             POSGRADO 4
+                             POSGRADO 5
                         ============================== -->
 
                         <article class="program-card reveal">
@@ -3250,16 +3485,16 @@
                                 <!-- CAMBIA ESTA IMAGEN -->
 
                                 <img
-                                    src="image/educacion_superior.jpeg"
-                                    alt="Especialidad"
+                                    src="image/ciencias_educacion.jpeg"
+                                    alt="Maestría"
                                 >
 
                                 <span class="program-type">
-                                    Diplomado
+                                    Doctorado
                                 </span>
 
                                 <span class="program-number">
-                                    04
+                                    05
                                 </span>
 
                             </div>
@@ -3268,21 +3503,24 @@
                             <div class="program-content">
 
                                 <h3>
-                                   Diplomado en Educación Superior e Inteligencia Artificial 
+                                    Doctorado en Ciencias de la Educación e Investigación Científica
                                 </h3>
 
                                 <p>
-                                    Aprende a integrar modelos de inteligencia artificial 
-                                    en tus clases para innovar en la enseñanza y potenciar el 
-                                    aprendizaje estudiantil.
+                                    <!-- Desarrolla capacidades de investigación avanzada para 
+                                    liderar la transformación y resolver problemas complejos en 
+                                    el ámbito pedagógico. -->
                                 </p>
 
 
                                 <div class="program-meta">
-
+                                    <span class="meta">
+                                        <i data-lucide="graduation-cap" size="12"></i>
+                                        Doctorado
+                                    </span>
                                     <span class="meta">
                                         <i data-lucide="clock" size="12"></i>
-                                        5 Meses
+                                        3 Años
                                     </span>
 
                                     <span class="meta">
@@ -3290,10 +3528,9 @@
                                         Virtual
                                     </span>
 
-                                    
                                     <span class="meta">
-                                        <i data-lucide="clock" size="12"></i>
-                                        880 HRS
+                                        <i data-lucide="award" size="12"></i>
+                                        Certificación
                                     </span>
 
                                 </div>
@@ -3305,7 +3542,7 @@
 
                                         <span></span>
 
-                                        INSCRIPCIONES ABIERTAS
+                                        ULTIMOS DÍAS DE INSCRIPCIÓN
 
                                     </div>
 
@@ -3313,7 +3550,7 @@
                                     <!-- CAMBIA EL WALINK -->
 
                                     <a
-                                        href="https://wa.link/jjg03i"
+                                        href="https://wa.link/yv1oxk"
                                         target="_blank"
                                         class="consult"
                                     >
@@ -3324,6 +3561,745 @@
                                         ></i>
 
                                         Consultar
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <!-- =============================
+                             POSGRADO 6
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/no_disponible.jpeg"
+                                    alt="Maestría"
+                                >
+
+                                <span class="program-type" style="color: white;">
+                                    posdoctorado
+                                </span>
+
+                                <span class="program-number">
+                                    06
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                    Posdoctorado en Educación, Investigación e inteligencia Artificial   
+                                </h3>
+
+                                <p>
+                                    <!-- Desarrolla capacidades de investigación avanzada para 
+                                    liderar la transformación y resolver problemas complejos en 
+                                    el ámbito pedagógico. -->
+                                </p>
+
+
+                                <div class="program-meta">
+                                    <span class="meta">
+                                        <i data-lucide="graduation-cap" size="12"></i>
+                                        NO DISONIBLE
+                                    </span>
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        NO DISPONIBLE
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href=""
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        NO DISPONIBLE
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <!-- =============================
+                             POSGRADO 7
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/no_disponible.jpeg"
+                                    alt="Maestría"
+                                >
+
+                                <span class="program-type" style="color: white;">
+                                    posdoctorado
+                                </span>
+
+                                <span class="program-number">
+                                    07
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                    Posdoctorado en investigación Mixta con Inteligencia Artificial
+                                </h3>
+
+                                <p>
+                                    <!-- Desarrolla capacidades de investigación avanzada para 
+                                    liderar la transformación y resolver problemas complejos en 
+                                    el ámbito pedagógico. -->
+                                </p>
+
+
+                                <div class="program-meta">
+                                    <span class="meta">
+                                        <i data-lucide="graduation-cap" size="12"></i>
+                                        NO DISONIBLE
+                                    </span>
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        NO DISPONIBLE
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href=""
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        NO DISPONIBLE
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <!-- =============================
+                             POSGRADO 8
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/no_disponible.jpeg"
+                                    alt="Maestría"
+                                >
+
+                                <span class="program-type" style="color: white;">
+                                    Diplomado
+                                </span>
+
+                                <span class="program-number">
+                                    08
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                    Diplomado en Investigación Educativa con Inteligencia Artififical  
+                                </h3>
+
+                                <p>
+                                    <!-- Desarrolla capacidades de investigación avanzada para 
+                                    liderar la transformación y resolver problemas complejos en 
+                                    el ámbito pedagógico. -->
+                                </p>
+
+
+                                <div class="program-meta">
+                                    <span class="meta">
+                                        <i data-lucide="graduation-cap" size="12"></i>
+                                        NO DISONIBLE
+                                    </span>
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        NO DISPONIBLE
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href=""
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        NO DISPONIBLE
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        
+                        <!-- =============================
+                             POSGRADO 9
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/no_disponible.jpeg"
+                                    alt="Maestría"
+                                >
+
+                                <span class="program-type" style="color: white;">
+                                    Diplomado
+                                </span>
+
+                                <span class="program-number">
+                                    09
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                    Diplomado en Archivística y Gestión Docuemntal
+                                </h3>
+
+                                <p>
+                                    <!-- Desarrolla capacidades de investigación avanzada para 
+                                    liderar la transformación y resolver problemas complejos en 
+                                    el ámbito pedagógico. -->
+                                </p>
+
+
+                                <div class="program-meta">
+                                    <span class="meta">
+                                        <i data-lucide="graduation-cap" size="12"></i>
+                                        NO DISONIBLE
+                                    </span>
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        NO DISPONIBLE
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href=""
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        NO DISPONIBLE
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <!-- =============================
+                             POSGRADO 10
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/no_disponible.jpeg"
+                                    alt="Maestría"
+                                >
+
+                                <span class="program-type" style="color: white;">
+                                    Diplomado
+                                </span>
+
+                                <span class="program-number">
+                                    10
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                    Diplomado en Educación Superior e Inteligencia Artificial    
+                                </h3>
+
+                                <p>
+                                    <!-- Desarrolla capacidades de investigación avanzada para 
+                                    liderar la transformación y resolver problemas complejos en 
+                                    el ámbito pedagógico. -->
+                                </p>
+
+
+                                <div class="program-meta">
+                                    <span class="meta">
+                                        <i data-lucide="graduation-cap" size="12"></i>
+                                        NO DISONIBLE
+                                    </span>
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        NO DISPONIBLE
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href=""
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        NO DISPONIBLE
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <!-- =============================
+                             POSGRADO 11
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/no_disponible.jpeg"
+                                    alt="Maestría"
+                                >
+
+                                <span class="program-type" style="color: white;">
+                                    Diplomado
+                                </span>
+
+                                <span class="program-number">
+                                    11
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                    Diplomado En Gestión Secretarial    
+                                </h3>
+
+                                <p>
+                                    <!-- Desarrolla capacidades de investigación avanzada para 
+                                    liderar la transformación y resolver problemas complejos en 
+                                    el ámbito pedagógico. -->
+                                </p>
+
+
+                                <div class="program-meta">
+                                    <span class="meta">
+                                        <i data-lucide="graduation-cap" size="12"></i>
+                                        NO DISONIBLE
+                                    </span>
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        NO DISPONIBLE
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href=""
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        NO DISPONIBLE
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <!-- =============================
+                             POSGRADO 12
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/no_disponible.jpeg"
+                                    alt="Maestría"
+                                >
+
+                                <span class="program-type" style="color: white;">
+                                    Diplomado
+                                </span>
+
+                                <span class="program-number">
+                                    12
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                    Diplomado en Contabilidad Comercial
+                                </h3>
+
+                                <p>
+                                    <!-- Desarrolla capacidades de investigación avanzada para 
+                                    liderar la transformación y resolver problemas complejos en 
+                                    el ámbito pedagógico. -->
+                                </p>
+
+
+                                <div class="program-meta">
+                                    <span class="meta">
+                                        <i data-lucide="graduation-cap" size="12"></i>
+                                        NO DISONIBLE
+                                    </span>
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        NO DISPONIBLE
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href=""
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        NO DISPONIBLE
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <!-- =============================
+                             POSGRADO 13
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/no_disponible.jpeg"
+                                    alt="Maestría"
+                                >
+
+                                <span class="program-type" style="color: white;">
+                                    Doctorado
+                                </span>
+
+                                <span class="program-number">
+                                    13
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                    Doctorado en Educación Superior e Investigacón Interdiciplinar
+                                </h3>
+
+                                <p>
+                                    <!-- Desarrolla capacidades de investigación avanzada para 
+                                    liderar la transformación y resolver problemas complejos en 
+                                    el ámbito pedagógico. -->
+                                </p>
+
+
+                                <div class="program-meta">
+                                    <span class="meta">
+                                        <i data-lucide="graduation-cap" size="12"></i>
+                                        NO DISONIBLE
+                                    </span>
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        NO DISPONIBLE
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href=""
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        NO DISPONIBLE
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                        <!-- =============================
+                             POSGRADO 14
+                        ============================== -->
+
+                        <article class="program-card reveal">
+
+                            <div class="program-image">
+
+                                <!-- CAMBIA ESTA IMAGEN -->
+
+                                <img
+                                    src="image/no_disponible.jpeg"
+                                    alt="Maestría"
+                                >
+
+                                <span class="program-type" style="color: white;">
+                                    Especialidad
+                                </span>
+
+                                <span class="program-number">
+                                    14
+                                </span>
+
+                            </div>
+
+
+                            <div class="program-content">
+
+                                <h3>
+                                    Especialidad Superior en Intervención Integral del Neurodesarrollo y la comunicación en la Primera Infancia
+                                </h3>
+
+                                <p>
+                                    <!-- Desarrolla capacidades de investigación avanzada para 
+                                    liderar la transformación y resolver problemas complejos en 
+                                    el ámbito pedagógico. -->
+                                </p>
+
+
+                                <div class="program-meta">
+                                    <!-- <span class="meta">
+                                        <i data-lucide="graduation-cap" size="12"></i>
+                                        NO DISONIBLE
+                                    </span> -->
+
+                                </div>
+
+
+                                <div class="program-footer">
+
+                                    <div class="status">
+
+                                        <span></span>
+
+                                        NO DISPONIBLE
+
+                                    </div>
+
+
+                                    <!-- CAMBIA EL WALINK -->
+
+                                    <a
+                                        href=""
+                                        target="_blank"
+                                        class="consult"
+                                    >
+
+                                        <i
+                                            data-lucide="message-circle"
+                                            size="15"
+                                        ></i>
+
+                                        NO DISPONIBLE
 
                                     </a>
 
