@@ -2972,7 +2972,7 @@
                 </a>
 
                 <a
-                    href="TU_LINK_WHATSAPP"
+                    href="https://wa.link/b1tbny"
                     target="_blank"
                     class="nav-button"
                 >
@@ -3147,7 +3147,7 @@
 
                                     
                                     <a
-                                        href="#"
+                                        href="https://wa.link/b1tbny"
                                         target="_blank"
                                         class="consult whatsapp-link"
                                         rel="noopener noreferrer"
@@ -3248,7 +3248,7 @@
                                     <!-- CAMBIA EL WALINK -->
 
                                     <a
-                                        href="#"
+                                        href="https://wa.link/tkpxwx"
                                         target="_blank"
                                         class="consult whatsapp-link"
                                         rel="noopener noreferrer"
@@ -3350,7 +3350,7 @@
 
                                     
                                     <a
-                                        href="#"
+                                        href="https://wa.link/z2r72z"
                                         target="_blank"
                                         class="consult whatsapp-link"
                                         rel="noopener noreferrer"
@@ -3457,7 +3457,7 @@
 
                                     
                                     <a
-                                        href="#"
+                                        href="https://wa.link/84tmiy"
                                         target="_blank"
                                         class="consult whatsapp-link"
                                         rel="noopener noreferrer"
@@ -3557,7 +3557,7 @@
 
                                     
                                     <a
-                                        href="#"
+                                        href="https://wa.link/pxvf0u"
                                         target="_blank"
                                         class="consult whatsapp-link"
                                         rel="noopener noreferrer"
@@ -5214,269 +5214,7 @@
 
 
     </script>
-    <script>
-
-    /* =========================================================
-       BASE DE DATOS DE WHATSAPP
-
-       Aquí guardamos:
-       - Número
-       - Mensaje predeterminado
-
-       Cada programa tiene su propio ID.
-    ========================================================= */
-
-
-    const whatsappContacts = {
-
-
-        "posgrado1": {
-
-            phone: "59163137484",
-
-            message:
-                "Hola, me interesa obtener información sobre el Diplomado en Educación Superior e Inteligencia Artificial. ¿Me comparten los requisitos, costos y fecha de inicio?"
-
-        },
-
-        "posgrado2": {
-
-            phone: "59163137484",
-
-            message:
-                "Hola, me interesa obtener más información sobre el Diplomado en Redacción Comercial y Secretarial. ¿Me comparten detalles de costos e inicio?"
-
-        },
-         "posgrado3": {
-
-            phone: "59163137484",
-
-            message:
-                "Hola, me interesa obtener información sobre el Diplomado en Educación Superior e Inteligencia Artificial. ¿Me comparten los requisitos, costos y fecha de inicio?"
-
-        },
-         "posgrado4": {
-
-            phone: "59163137484",
-
-            message:
-                "Hola, me interesa conocer más detalles sobre la Maestría en Educación Superior e Inteligencia Artificial. ¿Me comparten información sobre planes de pago, requisitos y fechas de inicio?"
-
-        },
-         "posgrado5": {
-
-            phone: "59163137484",
-
-            message:
-                "Hola, me interesa recibir más información sobre el Doctorado en Ciencias de la Educación e Investigación Científica. ¿Me comparten los requisitos, costos y fechas de inicio?"
-
-        }
-
-
-    };
-
-
-
-    /* =========================================================
-       ENLACES DE WHATSAPP
-
-       Los botones usan:
-       class="whatsapp-link"
-       data-id="posgrado2"
-
-       El JS busca el número y mensaje correspondientes.
-    ========================================================= */
-
-
-    document
-        .querySelectorAll('.whatsapp-link')
-        .forEach(link => {
-
-
-            link.addEventListener(
-                'click',
-                function(event) {
-
-
-                    /* =========================================
-                       EVITAR QUE href="#" SUBA AL INICIO
-                    ========================================== */
-
-                    event.preventDefault();
-
-
-                    /* =========================================
-                       OBTENER EL ID DEL BOTÓN
-
-                       Ejemplo:
-
-                       data-id="posgrado2"
-                    ========================================== */
-
-                    const id =
-                        this.dataset.id;
-
-
-                    /* =========================================
-                       BUSCAR EL CONTACTO
-                    ========================================== */
-
-                    const contact =
-                        whatsappContacts[id];
-
-
-                    /* =========================================
-                       VERIFICAR QUE EL CONTACTO EXISTA
-                    ========================================== */
-
-                    if (!contact) {
-
-                        console.error(
-                            'No se encontró el contacto:',
-                            id
-                        );
-
-                        return;
-
-                    }
-
-
-                    /* =========================================
-                       OBTENER NÚMERO Y MENSAJE
-                    ========================================== */
-
-                    const phone =
-                        contact.phone;
-
-
-                    const message =
-                        contact.message ||
-                        '';
-
-
-                    /* =========================================
-                       CREAR URL NORMAL DE WHATSAPP
-
-                       Esta URL se genera automáticamente.
-
-                       No necesitas escribirla completa
-                       dentro del HTML.
-                    ========================================== */
-
-                    const whatsappUrl =
-                        'https://wa.me/' +
-                        phone +
-                        '?text=' +
-                        encodeURIComponent(
-                            message
-                        );
-
-
-                    /* =========================================
-                       DETECTAR ANDROID
-                    ========================================== */
-
-                    const isAndroid =
-                        /Android/i.test(
-                            navigator.userAgent
-                        );
-
-
-                    /* =========================================
-                       DETECTAR TIKTOK
-                    ========================================== */
-
-                    const isTikTok =
-                        /TikTok/i.test(
-                            navigator.userAgent
-                        );
-
-
-                    /* =========================================
-                       ANDROID + TIKTOK
-
-                       Intentamos abrir WhatsApp directamente.
-                    ========================================== */
-
-                    if (
-                        isAndroid &&
-                        isTikTok
-                    ) {
-
-
-                        /* =====================================
-                           CREAR INTENT PARA WHATSAPP
-                        ====================================== */
-
-                        const intentUrl =
-                            'intent://send/' +
-                            phone +
-                            '?text=' +
-                            encodeURIComponent(
-                                message
-                            ) +
-                            '#Intent;' +
-                            'scheme=smsto;' +
-                            'package=com.whatsapp;' +
-                            'end';
-
-
-                        /* =====================================
-                           INTENTAR ABRIR WHATSAPP
-                        ====================================== */
-
-                        window.location.href =
-                            intentUrl;
-
-
-                        /* =====================================
-                           RESPALDO
-
-                           Si el Intent no funciona,
-                           intentamos abrir wa.me.
-                        ====================================== */
-
-                        setTimeout(
-                            function() {
-
-                                window.open(
-                                    whatsappUrl,
-                                    '_blank'
-                                );
-
-                            },
-                            1500
-                        );
-
-
-                        return;
-
-                    }
-
-
-                    /* =========================================
-                       OTROS NAVEGADORES
-
-                       Chrome
-                       Safari
-                       PC
-                       Navegadores normales
-                    ========================================== */
-
-                    window.open(
-                        whatsappUrl,
-                        '_blank'
-                    );
-
-
-                }
-            );
-
-
-        });
-
-
-</script>
+   
 
 </body>
 
